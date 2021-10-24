@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
     public float jumpHeight = 2f;
 
     public string goal ="Chest";
+
+    public string enemy = "Enemy";
     public string nextScene = "Menu"; 
 
     Vector3 velocity;
@@ -52,6 +54,15 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Yo Ho Ho! And a Bottle of Rum");
             SceneManager.LoadScene(nextScene);
-        }        
+        }  
+    }
+
+    public void OnTriggerEnter(Collider hit)
+    {
+        if (hit.gameObject.CompareTag(enemy))
+        {
+            Debug.Log("Game Over");
+            SceneManager.LoadScene(nextScene);
+        }         
     }
 }
